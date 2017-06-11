@@ -1,0 +1,35 @@
+﻿
+@model IEnumerable<ProjectInfo.Models.Achievement>
+
+<h3>Updates</h3>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Update)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+        @*@Model.OrderBy(d => d.Update)*@
+        @*@(Model.Sort((x, y) => DateTime.Compare(x.Update, y.Update)))*@
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Update)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "DeleteFromProjects", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+
