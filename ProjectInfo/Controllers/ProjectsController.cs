@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ProjectInfo.Context;
 using ProjectInfo.Models;
+using System.IO;
 
 namespace ProjectInfo.Controllers
 {
@@ -122,6 +123,15 @@ namespace ProjectInfo.Controllers
             Project project = db.Projects.Find(id);
             db.Projects.Remove(project);
             db.SaveChanges();
+
+            DirectoryInfo dir = new DirectoryInfo((Server.MapPath("~/Content/files/") + id));
+            FileInfo[] files = dir.GetFiles("*.*");
+            foreach (var item in files)
+            {
+                item.Delete();
+            }
+            dir.Delete();
+
             return RedirectToAction("Index");
         }
 

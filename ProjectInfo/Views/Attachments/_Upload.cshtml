@@ -6,7 +6,7 @@
     ViewBag.Title = "Upload";
 }
 
-<button id="AddFileButton" class="btn btn-default">Add file</button>
+@*<button id="AddFileButton" class="btn btn-default">Add file</button>*@
 
 @using (Html.BeginForm("Upload", "Attachments", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -14,9 +14,9 @@
     @Html.AntiForgeryToken()
 
 
-    <div id="UploadField" hidden="hidden">
-        <input type="file" name="File" id="File" class="form-control-file" />
-        <input type="submit" value="Upload" name="Upload" id="Upload" class="btn btn-default" />
+    @*<div id="UploadField">*@
+        @*<input type="file" name="File" id="File" class="form-control-file" />*@
+        
 
         @*<td>
             <label class="btn btn-default btn-file">
@@ -30,13 +30,25 @@
         @*</td>*@
 
 
-    </div>
+        <div class="col-lg-6 col-sm-6 col-12">
+            <h4>Input Groups</h4>
+            <div class="input-group">
+                <label class="input-group-btn">
+                    <span class="btn btn-primary">
+                        Browse&hellip; <input type="file" name="File" id="File" style="display: none;" multiple>
+                    </span>
+                </label>
+                <input type="text" class="form-control" readonly>
+            </div>
+            <input type="submit" value="Upload" name="Upload" id="Upload" class="btn btn-default" />
+        </div>
+        @*</div>*@
 }
 
 
-<script>
+@*<script>
     document.getElementById("AddFileButton").addEventListener("click", ShowAddFile)
-</script>
+</script>*@
 
 
 
