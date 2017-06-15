@@ -122,7 +122,7 @@ $('.table-hover').each(function () {
 
 
 //document.getElementById("AddFileButton").addEventListener("click", ShowAddFile)
-//document.getElementById("AddButton").addEventListener("click", ShowCreate)
+
 
 $(function () {
 
@@ -151,3 +151,23 @@ $(function () {
     });
 
 });
+
+function Priority() {
+    
+    var $table = $('.table-hover:first');
+    var $tbody = $table.find('tbody'); 
+    var $rows = $tbody.find('tr').toArray();
+    for (var i = 0; $rows.length; i++) {
+        var $cells = $rows[i].find('td').toArray();
+        if ($cells[7].text == 'Big'){$rows[i].addClass('danger')}
+    }
+
+
+
+    }
+
+    
+
+        
+
+document.getElementById("AddButton").addEventListener("click", ShowCreate)

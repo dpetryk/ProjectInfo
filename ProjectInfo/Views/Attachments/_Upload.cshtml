@@ -3,47 +3,48 @@
 
 
 @{
-    ViewBag.Title = "Upload";
+    ViewBag.Title = "_Upload";
 }
 
 @*<button id="AddFileButton" class="btn btn-default">Add file</button>*@
 
-@using (Html.BeginForm("Upload", "Attachments", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-   
+@*@using (Html.BeginForm("Details", "Projects", new { id = Url.RequestContext.RouteData.Values["id"] }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{*@
+<form method="post" enctype="multipart/form-data">
     @Html.AntiForgeryToken()
 
 
     @*<div id="UploadField">*@
-        @*<input type="file" name="File" id="File" class="form-control-file" />*@
-        
-
-        @*<td>
-            <label class="btn btn-default btn-file">
-                Browse files
-                <input type="file" name="File" id="File" hidden="hidden">
-            </label>*@
-        @*<div class="fileinput fileinput-new" data-provides="fileinput">
-                <span class="btn btn-default btn-file"><span>Choose file</span><input type="file" /></span>
-                <span class="fileinput-filename"></span><span class="fileinput-new">No file chosen</span>
-            </div>*@
-        @*</td>*@
+    @*<input type="file" name="File" id="File" class="form-control-file" />*@
 
 
-        <div class="col-lg-6 col-sm-6 col-12">
-            <h4>Input Groups</h4>
-            <div class="input-group">
-                <label class="input-group-btn">
-                    <span class="btn btn-primary">
-                        Browse&hellip; <input type="file" name="File" id="File" style="display: none;" multiple>
-                    </span>
-                </label>
-                <input type="text" class="form-control" readonly>
-            </div>
-            <input type="submit" value="Upload" name="Upload" id="Upload" class="btn btn-default" />
+    @*<td>
+        <label class="btn btn-default btn-file">
+            Browse files
+            <input type="file" name="File" id="File" hidden="hidden">
+        </label>*@
+    @*<div class="fileinput fileinput-new" data-provides="fileinput">
+            <span class="btn btn-default btn-file"><span>Choose file</span><input type="file" /></span>
+            <span class="fileinput-filename"></span><span class="fileinput-new">No file chosen</span>
+        </div>*@
+    @*</td>*@
+
+
+    <div class="col-lg-6 col-sm-6 col-12">
+        <div class="input-group">
+            <label class="input-group-btn">
+                <span class="btn btn-default">
+                    Browse&hellip; <input type="file" name="File" id="File" style="display: none">
+                </span>
+            </label>
+            <input type="text" class="form-control" readonly>
         </div>
-        @*</div>*@
-}
+        <br />
+        <input type="submit" value="Upload" name="Upload" id="Upload" class="btn btn-default" />
+    </div>
+    @*</div>*@
+</form>
+@*}*@
 
 
 @*<script>

@@ -16,6 +16,7 @@ namespace ProjectInfo.Controllers
             return PartialView("_Upload");
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Upload(Attachment attachment)
         {
             try
@@ -37,13 +38,15 @@ namespace ProjectInfo.Controllers
             catch (Exception)
             {
                 //System.Windows.Forms.MessageBox.Show("No file attached");
-            };      
+            };
 
 
 
+            //return Redirect(Request.UrlReferrer.ToString());
 
-           return PartialView("_Upload");
-           //return view(Request.UrlReferrer.PathAndQuery);
+            // return RedirectToAction("Details", "Projects", new { id = Url.RequestContext.RouteData.Values["id"] });
+            return PartialView("_Upload");
+            //return view(Request.UrlReferrer.PathAndQuery);
         }
 
         public PartialViewResult Index(int id)

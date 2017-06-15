@@ -84,16 +84,25 @@ namespace ProjectInfo.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateForProject([Bind(Include = "Id,Name,Update,ProjectId")] Achievement achievement)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Achievements.Add(achievement);
-                db.SaveChanges();
-                ViewBag.ProjectId = new SelectList(db.Projects, "Id", "Name");
+                if (ModelState.IsValid)
+                {
+                    db.Achievements.Add(achievement);
+                    db.SaveChanges();
+                    ViewBag.ProjectId = new SelectList(db.Projects, "Id", "Name");
+                    return PartialView("_CreateForProject");
+                }
+
+                ViewBag.ProjectId = new SelectList(db.Projects, "Id", "Name", achievement.ProjectId);
+                return View(achievement);
+            }
+            catch (Exception)
+            {
                 return PartialView("_CreateForProject");
+                //return RedirectToAction("CreateForProject");
             }
 
-            ViewBag.ProjectId = new SelectList(db.Projects, "Id", "Name", achievement.ProjectId);
-            return View(achievement);
         }
         //------------------------------------------------
         // GET: Achievements/Edit/5
