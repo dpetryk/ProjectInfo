@@ -12,10 +12,12 @@ using System.IO;
 
 namespace ProjectInfo.Controllers
 {
+    [Authorize]
     public class ProjectsController : Controller
     {
         private DatabaseContext db = new DatabaseContext();
 
+        [AllowAnonymous]
         // GET: Projects
         public ActionResult Index()
         {
@@ -23,6 +25,7 @@ namespace ProjectInfo.Controllers
             return View(projects.ToList());
         }
 
+        [AllowAnonymous]
         // GET: Projects/Details/5
         public ActionResult Details(int? id)
         {

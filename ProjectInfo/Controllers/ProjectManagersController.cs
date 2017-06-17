@@ -11,26 +11,30 @@ using ProjectInfo.Models;
 
 namespace ProjectInfo.Controllers
 {
+    [Authorize]
     public class ProjectManagersController : Controller
     {
         private DatabaseContext db = new DatabaseContext();
 
+        [AllowAnonymous]
         // GET: ProjectManagers
         public ActionResult Index()
         {
             return View(db.ProjectManagers.ToList());
         }
-
+        [AllowAnonymous]
         public ActionResult _Contact()
         {
             return PartialView(db.ProjectManagers.ToList());
         }
 
+        [AllowAnonymous]
         public ActionResult _AdminIndex()
         {
             return PartialView(db.ProjectManagers.ToList());
         }
 
+        [AllowAnonymous]
         // GET: ProjectManagers/Details/5
         public ActionResult Details(int? id)
         {

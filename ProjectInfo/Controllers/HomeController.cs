@@ -12,7 +12,7 @@ namespace ProjectInfo.Controllers
         {
             return View();
         }
-
+        [Authorize(Users = "admin@company.pl")]
         public ActionResult Administration()
         {
             

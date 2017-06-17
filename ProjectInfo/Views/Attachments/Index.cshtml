@@ -6,7 +6,11 @@
     @foreach (var item in Model)
     {
         <ul>
-            <li><a href="@Url.Action("Download", "Attachments", new { fileName = item.ToString(), projectId = Url.RequestContext.RouteData.Values["id"]}, null)">@item.ToString()&nbsp</a>|
-            <a href="@Url.Action("Delete", "Attachments", new { fileName = item.ToString(), projectId = Url.RequestContext.RouteData.Values["id"] }, null)"><img src="~/Content/img/delete.png" alt="Delete" height="10" /></a></li>
-        </ul>
+            <li>
+                <a href="@Url.Action("Download", "Attachments", new { fileName = item.ToString(), projectId = Url.RequestContext.RouteData.Values["id"]}, null)">@item.ToString()&nbsp</a>
+                @if (User.Identity.IsAuthenticated == true)
+                {
+                <span>|&nbsp</span><a href="@Url.Action("Delete", "Attachments", new { fileName = item.ToString(), projectId = Url.RequestContext.RouteData.Values["id"] }, null)"><img src="~/Content/img/delete.png" alt="Delete" height="10" /></a>}
+                </li>
+            </ul>
     }

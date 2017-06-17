@@ -11,10 +11,12 @@ using ProjectInfo.Models;
 
 namespace ProjectInfo.Controllers
 {
+    [Authorize]
     public class AchievementsController : Controller
     {
         private DatabaseContext db = new DatabaseContext();
 
+        [AllowAnonymous]
         public ActionResult AchievementsOfProject(int? id)
         {
             var achievements = db.Achievements.Where(a => a.ProjectId == id);
@@ -24,14 +26,14 @@ namespace ProjectInfo.Controllers
             return PartialView("_Achievements", SortedAchievementsList);
         }
 
-
+        [AllowAnonymous]
         // GET: Achievements
         public ActionResult Index()
         {
             var achievements = db.Achievements.Include(a => a.SelectedProject);
             return View(achievements.ToList());
         }
-
+        [AllowAnonymous]
         // GET: Achievements/Details/5
         public ActionResult Details(int? id)
         {

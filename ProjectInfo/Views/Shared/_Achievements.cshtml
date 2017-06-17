@@ -24,10 +24,13 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
+@if (User.Identity.IsAuthenticated == true)
+{
                 <td>
+
                     @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                     @Html.ActionLink("Delete", "DeleteFromProjects", new { id = item.Id })
-                </td>
+                </td>}
             </tr>
         }
 

@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace ProjectInfo.Controllers
 {
+    [Authorize]
     public class AttachmentsController : Controller
     {
         // GET: Attachments
@@ -48,7 +49,7 @@ namespace ProjectInfo.Controllers
             return PartialView("_Upload");
             //return view(Request.UrlReferrer.PathAndQuery);
         }
-
+        [AllowAnonymous]
         public PartialViewResult Index(int id)
         {
             List<string> items = new List<string>();
@@ -65,7 +66,7 @@ namespace ProjectInfo.Controllers
             }
             return PartialView(items);
         }
-
+        [AllowAnonymous]
         public FileResult Download(string fileName, int? projectId)
         {
             return File(Server.MapPath("~/Content/files/") + projectId + "/" + fileName, System.Net.Mime.MediaTypeNames.Application.Octet);

@@ -11,21 +11,25 @@ using ProjectInfo.Models;
 
 namespace ProjectInfo.Controllers
 {
+    [Authorize]
     public class TeamsController : Controller
     {
         private DatabaseContext db = new DatabaseContext();
 
+        [AllowAnonymous]
         // GET: Teams
         public ActionResult Index()
         {
             return View(db.Teams.ToList());
         }
 
+        [AllowAnonymous]
         public ActionResult _AdminIndex()
         {
             return PartialView(db.Teams.ToList());
         }
 
+        [AllowAnonymous]
         // GET: Teams/Details/5
         public ActionResult Details(int? id)
         {
