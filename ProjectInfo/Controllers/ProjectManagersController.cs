@@ -21,6 +21,16 @@ namespace ProjectInfo.Controllers
             return View(db.ProjectManagers.ToList());
         }
 
+        public ActionResult _Contact()
+        {
+            return PartialView(db.ProjectManagers.ToList());
+        }
+
+        public ActionResult _AdminIndex()
+        {
+            return PartialView(db.ProjectManagers.ToList());
+        }
+
         // GET: ProjectManagers/Details/5
         public ActionResult Details(int? id)
         {
@@ -53,7 +63,7 @@ namespace ProjectInfo.Controllers
             {
                 db.ProjectManagers.Add(projectManager);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Administration", "Home");
             }
 
             return View(projectManager);
@@ -85,7 +95,7 @@ namespace ProjectInfo.Controllers
             {
                 db.Entry(projectManager).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Administration", "Home");
             }
             return View(projectManager);
         }
@@ -113,7 +123,7 @@ namespace ProjectInfo.Controllers
             ProjectManager projectManager = db.ProjectManagers.Find(id);
             db.ProjectManagers.Remove(projectManager);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Administration", "Home");
         }
 
         protected override void Dispose(bool disposing)

@@ -152,22 +152,159 @@ $(function () {
 
 });
 
-function Priority() {
+//function Priority() {
     
-    var $table = $('.table-hover:first');
-    var $tbody = $table.find('tbody'); 
-    var $rows = $tbody.find('tr').toArray();
-    for (var i = 0; $rows.length; i++) {
-        var $cells = $rows[i].find('td').toArray();
-        if ($cells[7].text == 'Big'){$rows[i].addClass('danger')}
-    }
-
-
-
-    }
-
-    
-
+//    var $table = $('.table-hover:first');
+//    var $tbody = $table.find('tbody'); 
+//    var $rows = $tbody.find('tr').toArray();
+//    for (var i = 0; i < $rows.length; i++) {
         
+//        var $cells = $('td', $rows[i]).toArray();
+//        if($cells.indexOf('Big')) {$rows.('danger')};
+//        //if ($cells[7].innerHTML == 'Big') { $rows[i].addClass('danger') };
+//        $cells = null;
+//    }
+//}
+
+function priority() {
+    document.getElementById("dropdownMenu1").innerHTML = 'Colorize by: Priority <span class="caret"></span>'
+    var rows = document.getElementById("mainTable").rows;
+    for (var i = 0; i < rows.length; i++) {
+        cells = rows[i].cells;
+            if (cells[7].innerHTML.includes('High')) { rows[i].className = "danger" };
+            if (cells[7].innerHTML.includes('Medium')) { rows[i].className = "warning" };
+            if (cells[7].innerHTML.includes('Low')) { rows[i].className = "success" };      
+    }
+}
+    
+function effort() {
+    document.getElementById("dropdownMenu1").innerHTML = 'Colorize by: Effort <span class="caret"></span>'
+    var rows = document.getElementById("mainTable").rows;
+    for (var i = 0; i < rows.length; i++) {
+        cells = rows[i].cells;
+            if (cells[8].innerHTML.includes('Big')) { rows[i].className = "danger" };
+            if (cells[8].innerHTML.includes('Medium')) { rows[i].className = "warning" };
+            if (cells[8].innerHTML.includes('Small')) { rows[i].className = "success" };
+    }
+}
+        
+function delivery() {
+    document.getElementById("dropdownMenu1").innerHTML = 'Colorize by: Delivery status <span class="caret"></span>'
+    var rows = document.getElementById("mainTable").rows;
+    for (var i = 0; i < rows.length; i++) {
+        cells = rows[i].cells;
+        if (cells[9].innerHTML.includes('Red')) { rows[i].className = "danger" };
+        if (cells[9].innerHTML.includes('Amber')) { rows[i].className = "warning" };
+        if (cells[9].innerHTML.includes('Green')) { rows[i].className = "success" };
+    }
+}
+
+function status() {
+    document.getElementById("dropdownMenu1").innerHTML = 'Colorize by: Project status <span class="caret"></span>'
+    var rows = document.getElementById("mainTable").rows;
+    for (var i = 0; i < rows.length; i++) {
+        cells = rows[i].cells;
+        if (cells[6].innerHTML.includes('Cancelled')) { rows[i].className = "danger" };
+        if (cells[6].innerHTML.includes('On hold')) { rows[i].className = "warning" };
+        if (cells[6].innerHTML.includes('In progress')) { rows[i].className = "success" };
+    }
+}
+
+function clearColors() {
+    document.getElementById("dropdownMenu1").innerHTML = 'Colorize by <span class="caret"></span>'
+    //$('#dropdownMenu1').load();
+    var rows = document.getElementById("mainTable").rows;
+    for (var i = 0; i < rows.length; i++) {
+        cells = rows[i].cells;
+        rows[i].className = "" };
+}
+
+function hideShowCancelled() {
+    var hs = document.getElementById("hsCancelled")
+    if (hs.innerHTML.includes('Hide')) {
+        hs.innerHTML = "Show Cancelled";
+    }
+    else {
+        hs.innerHTML = "Hide Cancelled";
+    }
+    var rows = document.getElementById("mainTable").rows;
+    for (var i = 0; i < rows.length; i++) {
+        cells = rows[i].cells;
+        if (cells[6].innerHTML.includes('Cancelled') && rows[i].style.display != 'none'){
+            rows[i].style.display = 'none';
+            hs.innerHTML = "Show Cancelled";
+        }
+        else if (cells[6].innerHTML.includes('Cancelled') && rows[i].style.display == 'none') {
+            rows[i].style.display = 'table-row';
+        }
+        //else {
+        //    rows[i].style.display = 'table-row';
+        //}
+    }
+
+}
+
+function hideShowNotStarted() {
+        var hs = document.getElementById("hsNotStarted")
+        if (hs.innerHTML.includes('Hide')) {
+            hs.innerHTML = "Show Not Started";
+        }
+        else {
+            hs.innerHTML = "Hide Not Started";
+        }
+        var rows = document.getElementById("mainTable").rows;
+        for (var i = 0; i < rows.length; i++) {
+            cells = rows[i].cells;
+            if (cells[6].innerHTML.includes('started') && rows[i].style.display != 'none'){
+                rows[i].style.display = 'none';
+                hs.innerHTML = "Show Not Started";
+            }
+            else if (cells[6].innerHTML.includes('started') && rows[i].style.display == 'none') {
+                rows[i].style.display = 'table-row';
+            }
+            //else {
+            //    rows[i].style.display = 'table-row';
+            //}
+        }
+
+    }
+
+function hideShowOnHold() {
+    var hs = document.getElementById("hsOnHold")
+    if (hs.innerHTML.includes('Hide')) {
+        hs.innerHTML = "Show On hold";
+    }
+    else {
+        hs.innerHTML = "Hide On Hold";
+    }
+    var rows = document.getElementById("mainTable").rows;
+    for (var i = 0; i < rows.length; i++) {
+        cells = rows[i].cells;
+        if (cells[6].innerHTML.includes('hold') && rows[i].style.display != 'none') {
+            rows[i].style.display = 'none';
+            hs.innerHTML = "Show On hold";
+        }
+        else if (cells[6].innerHTML.includes('hold') && rows[i].style.display == 'none') {
+            rows[i].style.display = 'table-row';
+        }
+        //else {
+        //    rows[i].style.display = 'table-row';
+        //}
+    }
+
+}
+
+function showAll() {
+    var rows = document.getElementById("mainTable").rows;
+
+    for (var i = 0; i < rows.length; i++) {
+        rows[i].style.display = 'table-row';
+        document.getElementById("hsOnHold").innerHTML = "Hide On hold";
+        document.getElementById("hsCancelled").innerHTML = "Hide Cancelled";
+        document.getElementById("hsNotStarted").innerHTML = "Hide Not Started";
+
+    }
+}
+
 
 document.getElementById("AddButton").addEventListener("click", ShowCreate)

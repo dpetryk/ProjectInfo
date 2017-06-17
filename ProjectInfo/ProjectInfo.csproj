@@ -204,6 +204,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProjectManagersController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
+    <Compile Include="Controllers\TeamsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -226,6 +227,7 @@
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap-paper.css" />
     <Content Include="Content\filtrSort.css" />
     <Content Include="Content\img\delete.png" />
     <Content Include="favicon.ico" />
@@ -261,7 +263,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Administration.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
@@ -304,6 +306,14 @@
     <Content Include="Views\ProjectManagers\Index.cshtml" />
     <Content Include="Views\Attachments\_Upload.cshtml" />
     <Content Include="Views\Attachments\Index.cshtml" />
+    <Content Include="Views\ProjectManagers\_Contact.cshtml" />
+    <Content Include="Views\Teams\Create.cshtml" />
+    <Content Include="Views\Teams\Delete.cshtml" />
+    <Content Include="Views\Teams\Details.cshtml" />
+    <Content Include="Views\Teams\Edit.cshtml" />
+    <Content Include="Views\Teams\Index.cshtml" />
+    <Content Include="Views\Teams\_AdminIndex.cshtml" />
+    <Content Include="Views\ProjectManagers\_AdminIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\files\" />

@@ -13,10 +13,9 @@ namespace ProjectInfo.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Administration()
         {
-            ViewBag.Message = "Your application description page.";
-
+            
             return View();
         }
 
