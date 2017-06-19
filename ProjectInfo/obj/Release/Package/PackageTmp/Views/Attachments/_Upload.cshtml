@@ -1,0 +1,57 @@
+﻿@model ProjectInfo.Models.Attachment
+
+
+
+@{
+    ViewBag.Title = "_Upload";
+}
+
+@*<button id="AddFileButton" class="btn btn-default">Add file</button>*@
+
+@*@using (Html.BeginForm("Details", "Projects", new { id = Url.RequestContext.RouteData.Values["id"] }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{*@
+<form method="post" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+
+
+    @*<div id="UploadField">*@
+    @*<input type="file" name="File" id="File" class="form-control-file" />*@
+
+
+    @*<td>
+        <label class="btn btn-default btn-file">
+            Browse files
+            <input type="file" name="File" id="File" hidden="hidden">
+        </label>*@
+    @*<div class="fileinput fileinput-new" data-provides="fileinput">
+            <span class="btn btn-default btn-file"><span>Choose file</span><input type="file" /></span>
+            <span class="fileinput-filename"></span><span class="fileinput-new">No file chosen</span>
+        </div>*@
+    @*</td>*@
+
+
+    <div class="col-lg-6 col-sm-6 col-12">
+        <div class="input-group">
+            <label class="input-group-btn">
+                <span class="btn btn-default">
+                    Browse&hellip; <input type="file" name="File" id="File" style="display: none">
+                </span>
+            </label>
+            <input type="text" class="form-control" readonly>
+        </div>
+        <br />
+        <input type="submit" value="Upload" name="Upload" id="Upload" class="btn btn-primary" />
+    </div>
+    @*</div>*@
+</form>
+@*}*@
+
+
+@*<script>
+    document.getElementById("AddFileButton").addEventListener("click", ShowAddFile)
+</script>*@
+
+
+
+
+

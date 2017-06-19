@@ -1,0 +1,67 @@
+﻿@import url(http://fonts.googleapis.com/css?family=Karla:400,700);
+
+button {
+	background-color: #d7d7d7;
+	border: none;
+	padding: 3px 10px 4px 10px;
+	border-radius: 4px;
+	color: #333;
+	font-family: 'Karla', sans-serif;
+	font-size: 100%;}
+
+button:hover, button.active {
+	background-color: #fff;
+	color: #fff;
+	cursor: pointer;}
+
+
+/* Style tabel */
+/*table {
+	margin: 1px auto;
+	width: 780px;}
+table#rates	{width: 380px;}
+th, td {
+	border-radius: 3px;
+	color: #333;
+	padding: 7px 10px 5px 10px;
+	min-width: 9em;
+	text-align: left;}
+th {
+	background-color: #fff;
+	font-weight: bold;
+	text-transform: uppercase;}
+td {
+	background-color: #fff;}*/
+table th:hover {
+	cursor: pointer;
+    background-color:#f5f5f5
+}
+
+table-hover tr :hover {
+	cursor: pointer;
+    background-color:#f5f5f5
+}
+
+th.ascending, th.descending, table.sortable th:hover {
+	background-color:#f5f5f5;}
+
+/* StrzaĹki uĹźywane do sortowania tabeli */
+th.ascending:after {
+	font-size: 60%;
+    content: '\25B2';
+    float: right;
+	padding: 4px 5px 1px 1px;}
+th.descending:after {
+	font-size: 60%;
+    content: '\25BC';
+    float: right;
+	padding: 4px 5px 1px 1px;}
+
+.about {
+	width: 780px;
+	margin: 1px auto 40px auto;}
+.about:after {
+  content: "";
+  display: table;
+  clear: both;}
+.about h2 {text-align: left; float: left;}

@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Administration Panel";
+}
+<h2>@ViewBag.Title</h2>
+
+
+<div class="row">
+    <div class="col-md-6">
+        @{Html.RenderAction("_AdminIndex", "Teams");}
+        </div>
+    <div class="col-md-6">
+        @{Html.RenderAction("_AdminIndex", "ProjectManagers");}
+        </div>
+</div>

@@ -1,0 +1,19 @@
+﻿@model IEnumerable<ProjectInfo.Models.ProjectManager>
+
+@{
+    ViewBag.Title = "Contact";
+}
+<h2>@ViewBag.Title</h2>
+
+@{Html.RenderAction("_Contact", "ProjectManagers");}
+
+<address>
+    Company Name<br />
+    Street, WA 98052-6399<br />
+    <abbr title="Phone">P:</abbr>
+    425.555.0100
+</address>
+
+<address>
+    <strong>Administrator:</strong>   <a href="mailto:damian.petryk@gmail.com">Damian Petryk</a><br />
+</address>

@@ -80,3 +80,6 @@ C:\Users\DP\documents\visual studio 2015\Projects\ProjectInfo\ProjectInfo\bin\Mi
 C:\Users\DP\documents\visual studio 2015\Projects\ProjectInfo\ProjectInfo\obj\Debug\ProjectInfo.dll
 C:\Users\DP\documents\visual studio 2015\Projects\ProjectInfo\ProjectInfo\obj\Debug\ProjectInfo.pdb
 C:\Users\DP\documents\visual studio 2015\Projects\ProjectInfo\ProjectInfo\obj\Debug\ProjectInfo.csprojResolveAssemblyReference.cache
+C:\Users\DP\documents\visual studio 2015\Projects\ProjectInfo\ProjectInfo\bin\System.Data.SqlServerCe.dll
+C:\Users\DP\documents\visual studio 2015\Projects\ProjectInfo\ProjectInfo\obj\Debug\ProjectInfo.Migrations.InitialCreate.resources
+C:\Users\DP\documents\visual studio 2015\Projects\ProjectInfo\ProjectInfo\obj\Debug\ProjectInfo.csproj.GenerateResource.Cache

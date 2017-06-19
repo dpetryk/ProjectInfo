@@ -1,0 +1,136 @@
+﻿@model ProjectInfo.Models.Project
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>@Html.DisplayFor(model => model.Name)</h2>
+        <div>
+            <h3>Information</h3>
+            <hr />
+            <dl class="dl-horizontal">
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.SelectedPM.Name)
+                </dt>
+
+                <dd>
+                    <a href="mailto:@(Model.SelectedPM.Email)">@Html.DisplayFor(model => model.SelectedPM.Name)</a>
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.SelectedTeam.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.SelectedTeam.Name)
+                </dd>
+
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.StartDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.StartDate)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.DeliveryDate)
+                </dt>
+
+                <dd id="delivery">
+                    @Html.DisplayFor(model => model.DeliveryDate)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Status)
+                </dt>
+
+                <dd id="status">
+                    @Html.DisplayFor(model => model.Status)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Priority)
+                </dt>
+
+                <dd id="priority">
+                    @Html.DisplayFor(model => model.Priority)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Effort)
+                </dt>
+
+                <dd id="effort">
+                    @Html.DisplayFor(model => model.Effort)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.DeliveryStatus)
+                </dt>
+
+                <dd id="dstatus">
+                    @Html.DisplayFor(model => model.DeliveryStatus)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Overview)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Overview)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Risks)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Risks)
+                </dd>
+            </dl>
+        </div>
+        <p>
+            @if (User.Identity.IsAuthenticated == true)
+            {
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) <span>|</span>
+                                                                    }
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>
+    <div class="col-md-6">
+        <h2><br></h2>
+        @{Html.RenderAction("Index", "Attachments", new { projectId = Url.RequestContext.RouteData.Values["id"] });}
+        <br />
+        @if (User.Identity.IsAuthenticated == true)
+        {
+            { Html.RenderAction("Upload", "Attachments"); }
+        }
+    </div>
+</div>
+<div>
+    @if (User.Identity.IsAuthenticated == true)
+    {
+        <button id="AddButton" class="btn btn-primary">Add new comment</button>
+        <div id="AddComment" hidden="true">
+            @{Html.RenderAction("CreateForProject", "Achievements");}
+        </div>}
+    @{Html.RenderAction("AchievementsOfProject", "Achievements", new { id = Model.Id });}
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+@*<script>
+
+
+        $(document).ready(colorizeDetails)
+    </script>*@

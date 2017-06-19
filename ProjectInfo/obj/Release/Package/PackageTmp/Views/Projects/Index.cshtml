@@ -1,0 +1,234 @@
+﻿@using Microsoft.AspNet.Identity
+@model IEnumerable<ProjectInfo.Models.Project>
+
+<link href="~/Content/filtrSort.css" rel="stylesheet"><!--dodano-->
+@*<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>*@
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Projects list</h2>
+<div>
+    @if (User.Identity.IsAuthenticated == true) { 
+    <div style="display:inline-block">
+        <button class="btn btn-primary" onclick="window.document.location='/Projects/Create'">New project</button>
+    </div>}
+        <div class="dropdown" style="display:inline-block">
+
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Colorize by
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><a onclick="status()" href="#"> Project status</a></li>
+                <li><a onclick="priority()" href="#"> Priority </a></li>
+                <li><a onclick="effort()" href="#">Effort</a></li>
+                <li><a onclick="delivery()" href="#">Delivery status</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a onclick="clearColors()" href="#">Clear colours</a></li>
+            </ul>
+     </div>
+    <div class="dropdown" style="display:inline-block">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Show/Hide
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <li><a id="hsCancelled" onclick="hideShowCancelled()" href="#">Hide Cancelled</a></li>
+            <li><a id="hsNotStarted" onclick="hideShowNotStarted()" href="#">Hide Not started</a></li>
+            <li><a id="hsOnHold" onclick="hideShowOnHold()" href="#">Hide On hold</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a onclick="showAll()" href="#">Show All</a></li>
+        </ul>
+        </div>
+    </div>
+
+    <br />
+    <table id="mainTable" class="table-hover">
+        <thead>
+            <tr>
+                <th data-sort="name">
+                    No.
+                </th>
+                <th data-sort="name">
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th data-sort="name">
+                    @Html.DisplayNameFor(model => model.SelectedPM.Name)
+                </th>
+                <th data-sort="name">
+                    @Html.DisplayNameFor(model => model.SelectedTeam.Name)
+                </th>
+                <th data-sort="date">
+                    @Html.DisplayNameFor(model => model.StartDate)
+                </th>
+                <th data-sort="date">
+                    @Html.DisplayNameFor(model => model.DeliveryDate)
+                </th>
+                <th data-sort="name">
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th data-sort="name">
+                    @Html.DisplayNameFor(model => model.Priority)
+                </th>
+                <th data-sort="name">
+                    @Html.DisplayNameFor(model => model.Effort)
+                </th>
+                <th data-sort="name">
+                    @Html.DisplayNameFor(model => model.DeliveryStatus)
+                </th>
+               @if (User.Identity.IsAuthenticated == true)
+               { <th data-sort="name"></th>}
+            </tr>
+        </thead>
+        <tbody>
+            @{int i = 0;
+            foreach (var item in Model)
+            {
+                if (item.Status != "Completed")
+                {
+                    i++;
+                        <tr onclick="window.document.location='/Projects/Details/@item.Id'">
+                            <td>
+                                @i
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SelectedPM.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SelectedTeam.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StartDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DeliveryDate)
+                            </td>
+                            <td id="status">
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td id="priority">
+                                @Html.DisplayFor(modelItem => item.Priority)
+                            </td>
+                            <td id="effort">
+                                @Html.DisplayFor(modelItem => item.Effort)
+                            </td>
+                            <td id="dstatus">
+                                @Html.DisplayFor(modelItem => item.DeliveryStatus)
+                            </td>
+@if (User.Identity.IsAuthenticated == true)
+{
+                            <td>
+                                <a href="@Url.Action("Delete", "Projects", new { id = item.Id })"><img src="~/Content/img/delete.png" alt="Delete" height="10" /></a>
+                            </td>}
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+
+    <br />
+    <br />
+    <br />
+
+    <h3>Completed</h3>
+    <table class="table-hover">
+        <thead>
+            <tr>
+                <th data-sort="name">
+                    No.
+                </th>
+                <th data-sort="name">
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th data-sort="name">
+                    @Html.DisplayNameFor(model => model.SelectedPM.Name)
+                </th>
+                <th data-sort="name">
+                    @Html.DisplayNameFor(model => model.SelectedTeam.Name)
+                </th>
+                <th data-sort="date">
+                    @Html.DisplayNameFor(model => model.StartDate)
+                </th>
+                <th data-sort="date">
+                    @Html.DisplayNameFor(model => model.DeliveryDate)
+                </th>
+                <th data-sort="name">
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th data-sort="name">
+                    @Html.DisplayNameFor(model => model.Priority)
+                </th>
+                <th data-sort="name">
+                    @Html.DisplayNameFor(model => model.Effort)
+                </th>
+                <th data-sort="name">
+                    @Html.DisplayNameFor(model => model.DeliveryStatus)
+                </th>
+                @if (User.Identity.IsAuthenticated == true)
+                {<th data-sort="name"></th>}
+            </tr>
+        </thead>
+        <tbody>
+            @{i = 0;
+            foreach (var item in Model)
+            {
+                if (item.Status == "Completed")
+                {
+                    i++;
+                        <tr onclick="window.document.location='/Projects/Details/@item.Id'">
+                            <td>
+                                @i
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SelectedPM.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SelectedTeam.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StartDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DeliveryDate)
+                            </td>
+                            <td id="status">
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td id="priority">
+                                @Html.DisplayFor(modelItem => item.Priority)
+                            </td>
+                            <td id="effort">
+                                @Html.DisplayFor(modelItem => item.Effort)
+                            </td>
+                            <td id="dstatus">
+                                @Html.DisplayFor(modelItem => item.DeliveryStatus)
+                            </td>
+                      @if (User.Identity.IsAuthenticated == true)
+                      {
+                            <td>
+                                <a href="@Url.Action("Delete", "Projects", new { id = item.Id })"><img src="~/Content/img/delete.png" alt="Delete" height="10" /></a>
+                            </td>}
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+
+
+
+
+    <script>
+        // $(document).ready(colorizeIndex)
+    </script>
